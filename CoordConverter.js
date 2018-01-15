@@ -7,7 +7,7 @@ function DatumCoordinateObj() {
 
 }
 
-function DatumObj(degrees, minutes, seconds, hemisphere) {
+function DatumObj(degrees, minutes, seconds, hemisphere = "+") {
     this.degrees = degrees;
     this.minutes = minutes;
     this.seconds = seconds;
@@ -66,6 +66,7 @@ function datumFromString(datumToParse){
     console.log(stingArray[2]);
     console.log(stingArray[2][0]);
     */
+    return new DatumObj(degrees, mins, secs);
 }
 
 console.log(stdCoordsToDecimal(35, 54, 23, true));
