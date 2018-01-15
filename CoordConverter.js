@@ -1,3 +1,7 @@
+/**
+ *
+ * @constructor
+ */
 
 function CoordinateObj() {
 
@@ -21,16 +25,16 @@ function DatumObj(degrees, minutes, seconds, hemisphere = "+") {
  *
  *   .60798357841 11 places is most accurate
  */
-function stdCoordsToDecimal(dd, mm, ss, isNegative = false){
+function stdCoordsToDecimal(dd, mm, ss, _hemishere = true){
     let degrees = parseFloat(dd);
     let minutes = parseFloat(mm);
     let seconds = parseFloat(ss);
-    let hemisphere = isNegative;
+    let hemisphere = _hemishere;
 
     let decimalFmt = dd + mm/60 +ss/3600;
-    if(isNegative){
+    if(!hemisphere){
         decimalFmt = decimalFmt * -1;
-        console.log(isNegative);
+        console.log("Negative Coordinate");
     }
     return decimalFmt.toFixed(12);
 }
@@ -39,7 +43,21 @@ function decimalCoordsToStd(){
 
 }
 
+/**
+ * North Latitude and East Longitude are positive
+ * South Latitude and West Longitude are negative
+ */
+
 function datumFromString(datumToParse){
+    let hemisphere = true;
+    if(datumToParse.includes('W') || datumToParse.includes('S')){
+        // First we replace the last character witha space and trim it
+        hemisphere = false;
+        console.log('Negative Coordinate');
+        console.log('Pre Slice: ' + datumToParse );
+        datumToParse = datumToParse.slice(0, -1);
+        console.log('Post Slice: ' + datumToParse );
+    }
     let stingArray = datumToParse.split(" ");
     let degrees =  parseFloat(stingArray[0].replace(/d|e|g|r|s|°/gi, " "));
     let mins = parseFloat(stingArray[1].replace(/m|i|n|u|t|e|s|"/gi, " "));
@@ -55,9 +73,7 @@ function datumFromString(datumToParse){
         }
     }
     */
-    degrees=degrees*2;
-    mins=mins*2;
-    secs=secs*2;
+
     console.log(degrees);
     console.log(mins);
     console.log(secs);
@@ -66,9 +82,11 @@ function datumFromString(datumToParse){
     console.log(stingArray[2]);
     console.log(stingArray[2][0]);
     */
-    return new DatumObj(degrees, mins, secs);
+    return new DatumObj(degrees, mins, secs, hemisphere);
 }
 
 console.log(stdCoordsToDecimal(35, 54, 23, true));
 //console.log(stdCoordsToDecimal(-35, 54, 23));
 datumFromString("35° 54' 22.9998\"");
+var tester = datumFromString("35° 54' 22.9998\"W");
+console.log(stdCoordsToDecimal(tester.degrees, tester.minutes, tester.seconds, tester.hemisphere));
