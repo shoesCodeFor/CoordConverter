@@ -3,8 +3,9 @@
  * @constructor
  */
 
-function CoordinateObj() {
-
+function CoordinateObj(lat, lng) {
+    this.latitude = lat;
+    this.longitude = lng;
 }
 
 function DatumCoordinateObj() {
