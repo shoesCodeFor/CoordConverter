@@ -1,6 +1,6 @@
 /**
  *
- * @constructor
+ * @constructor - std coordinates
  */
 
 function CoordinateObj(lat, lng) {
