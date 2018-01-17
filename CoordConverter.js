@@ -9,6 +9,8 @@ function CoordinateObj(lat, lng) {
 }
 
 function DatumCoordinateObj() {
+    latitude:{},
+    longitude: {}
 
 }
 
