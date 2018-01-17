@@ -8,9 +8,9 @@ function CoordinateObj(lat, lng) {
     this.longitude = lng;
 }
 
-function DatumCoordinateObj() {
-    latitude:{},
-    longitude: {}
+function DatumCoordinateObj(latObj, longObj) {
+    this.latitude = latObj,
+    this.longitude= longObj
 
 }
 
