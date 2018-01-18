@@ -1,6 +1,12 @@
+function CoordinateConversion(){
+    
+}
+
 /**
- *
- * @constructor - std coordinates
+ * This is a coordinate in standard decimal format
+ * @param lat - float value (positive is Northern Hemisphere, negative is Southern)
+ * @param lng - float value (positive is Eastern Hemisphere, negative is Western)
+ * @constructor
  */
 
 function CoordinateObj(lat, lng) {
@@ -10,11 +16,11 @@ function CoordinateObj(lat, lng) {
 
 function DatumCoordinateObj(latObj, longObj) {
     this.latitude = latObj,
-    this.longitude= longObj
+    this.longitude = longObj
 
 }
 
-function DatumObj(degrees, minutes, seconds, hemisphere = "+") {
+function DatumObj(degrees, minutes, seconds, hemisphere = true) {
     this.degrees = degrees;
     this.minutes = minutes;
     this.seconds = seconds;
@@ -88,6 +94,9 @@ function datumFromString(datumToParse){
     return new DatumObj(degrees, mins, secs, hemisphere);
 }
 
+
+
+// Tests
 console.log(stdCoordsToDecimal(35, 54, 23, true));
 //console.log(stdCoordsToDecimal(-35, 54, 23));
 datumFromString("35° 54' 22.9998\"");
