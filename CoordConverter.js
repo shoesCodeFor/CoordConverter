@@ -1,5 +1,7 @@
-function CoordinateConversion(){
-    
+function CoordinateConversion(latStr, lngStr){
+    this.latDatum = datumFromString(latStr);
+    this.lngDatum = datumFromString(lngStr);
+    return CoordinateObj();
 }
 
 /**
