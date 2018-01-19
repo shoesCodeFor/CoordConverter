@@ -1,7 +1,14 @@
+/**
+ *
+ * @param latStr - Latitude string in traditional format
+ * @param lngStr - Longitude string in traditional format
+ * @returns {CoordinateObj} - should be as an array
+ * @constructor
+ */
 function CoordinateConversion(latStr, lngStr){
     this.latDatum = datumFromString(latStr);
     this.lngDatum = datumFromString(lngStr);
-    return CoordinateObj();
+    return new CoordinateObj(stdCoordsToDecimal(this.latDatum), stdCoordsToDecimal(this.lngDatum));
 }
 
 /**
@@ -14,6 +21,7 @@ function CoordinateConversion(latStr, lngStr){
 function CoordinateObj(lat, lng) {
     this.latitude = lat;
     this.longitude = lng;
+
 }
 
 function DatumCoordinateObj(latObj, longObj) {
