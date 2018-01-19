@@ -24,6 +24,12 @@ function CoordinateObj(lat, lng) {
 
 }
 
+/**
+ * This function can be used to convert decimal formatted lat/lng pairs to traditional format
+ * @param latObj
+ * @param longObj
+ * @constructor
+ */
 function DatumCoordinateObj(latObj, longObj) {
     this.latitude = latObj,
     this.longitude = longObj
