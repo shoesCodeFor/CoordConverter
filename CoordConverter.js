@@ -113,8 +113,16 @@ function datumFromString(datumToParse){
 
 
 // Tests
+// Std Coords to Decimal
 console.log(stdCoordsToDecimal(35, 54, 23, true));
 //console.log(stdCoordsToDecimal(-35, 54, 23));
+
+// Datum from a string into conversion
 datumFromString("35° 54' 22.9998\"");
 var tester = datumFromString("35° 54' 22.9998\"W");
 console.log(stdCoordsToDecimal(tester.degrees, tester.minutes, tester.seconds, tester.hemisphere));
+
+// The whole shebang
+var testStr = "35° 54' 22.9998\"W 35° 54' 22.9998\"";
+var num_matches = testStr.match(/ /gi).length;
+console.log("Number of spaces: " + num_matches);
