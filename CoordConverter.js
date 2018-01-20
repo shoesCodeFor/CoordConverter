@@ -74,6 +74,18 @@ function decimalCoordsToStd(){
  */
 
 function datumFromString(datumToParse){
+    var numOfSpaces = 0;
+    switch (numOfSpaces) {
+        case 0:
+            break;
+        case 1:
+            break;
+        case 2:
+            break;
+        case 4:
+            break;
+    }
+
     let hemisphere = true;
     if(datumToParse.includes('W') || datumToParse.includes('S')){
         // First we replace the last character witha space and trim it
