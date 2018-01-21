@@ -75,6 +75,9 @@ function decimalCoordsToStd(){
 
 function datumFromString(datumToParse){
     var numOfSpaces = 0;
+
+    // Trim left and right whitespaces
+    datumToParse = datumToParse.trim();
     switch (numOfSpaces) {
         case 0:
             break;
