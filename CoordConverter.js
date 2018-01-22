@@ -2,6 +2,8 @@
  * CoordConverter.js
  *
  * General usage:  Pass in traditional style coodinates as a string
+ * Example: 48°22'12.1"N 121°37'56.2"W
+ * Should Output: 48.370028, -121.632278
  *
  */
 
