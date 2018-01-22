@@ -44,7 +44,10 @@ function DatumObj(degrees, minutes, seconds, hemisphere = true) {
 }
 
 
+
+
 /**
+ *  Unless the string is a "_ dbl-quote and a space then we'll need 
  *  (dd + mm/60 +ss/3600) to Decimal degrees (dd.ff)
  *   dd = whole degrees, mm = minutes, ss = seconds
  *
@@ -74,10 +77,12 @@ function decimalCoordsToStd(){
  */
 
 function datumFromString(datumToParse){
-    var numOfSpaces = 0;
-
     // Trim left and right whitespaces
     datumToParse = datumToParse.trim();
+    var numOfSpaces = 0;
+    numOfSpaces = datumToParse.match(/ /gi).length;
+    console.log("Number of spaces: " + numOfSpaces);
+
     switch (numOfSpaces) {
         case 0:
             break;
@@ -98,10 +103,14 @@ function datumFromString(datumToParse){
         datumToParse = datumToParse.slice(0, -1);
         console.log('Post Slice: ' + datumToParse );
     }
+
+    // Assume this string has spaces between coords
     let stingArray = datumToParse.split(" ");
     let degrees =  parseFloat(stingArray[0].replace(/d|e|g|r|s|°/gi, " "));
     let mins = parseFloat(stingArray[1].replace(/m|i|n|u|t|e|s|"/gi, " "));
     let secs = parseFloat(stingArray[2].replace(/s|e|c|o|n|d|"/gi, " "));
+
+
     /*
     for(let i=0; i < degrees.length; i++){
         let checkChar = degrees[i];
