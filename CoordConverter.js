@@ -1,4 +1,15 @@
 /**
+ * CoordConverter.js
+ *
+ * General usage:  Pass in traditional style coodinates as a string
+ *
+ */
+
+
+
+
+
+/**
  *
  * @param latStr - Latitude string in traditional format
  * @param lngStr - Longitude string in traditional format
@@ -47,7 +58,7 @@ function DatumObj(degrees, minutes, seconds, hemisphere = true) {
 
 
 /**
- *  Unless the string is a "_ dbl-quote and a space then we'll need 
+ *  Unless the string is a "_ dbl-quote and a space then we'll need
  *  (dd + mm/60 +ss/3600) to Decimal degrees (dd.ff)
  *   dd = whole degrees, mm = minutes, ss = seconds
  *
@@ -133,6 +144,21 @@ function datumFromString(datumToParse){
     */
     return new DatumObj(degrees, mins, secs, hemisphere);
 }
+
+
+function coordPairSplitter(){
+    // If a coordinate string is a pair then we send it here
+
+    // If the coord has a directional and space then split there
+
+    // If the coord has a double quote and space split it here
+
+
+}
+
+
+
+
 
 
 
