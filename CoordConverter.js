@@ -66,11 +66,11 @@ function DatumObj(degrees, minutes, seconds, hemisphere = true) {
  *
  *   .60798357841 11 places is most accurate
  */
-function stdCoordsToDecimal(dd, mm, ss, _hemishere = true){
+function stdCoordsToDecimal(dd, mm, ss, _hemisphere = true){
     let degrees = parseFloat(dd);
     let minutes = parseFloat(mm);
     let seconds = parseFloat(ss);
-    let hemisphere = _hemishere;
+    let hemisphere = _hemisphere;
 
     let decimalFmt = dd + mm/60 +ss/3600;
     if(!hemisphere){
@@ -85,6 +85,7 @@ function decimalCoordsToStd(){
 }
 
 /**
+ * Refactor this - one function to trim the string, one to count the space and one parse
  * North Latitude and East Longitude are positive
  * South Latitude and West Longitude are negative
  */
