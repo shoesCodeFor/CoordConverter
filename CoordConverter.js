@@ -148,6 +148,10 @@ function datumFromString(datumToParse){
     return new DatumObj(degrees, mins, secs, hemisphere);
 }
 
+function trimString(str) {
+    return str.trim();
+}
+
 
 function coordPairSplitter(){
     // If a coordinate string is a pair then we send it here
