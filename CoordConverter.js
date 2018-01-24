@@ -1,6 +1,10 @@
 /**
  * CoordConverter.js
  *
+ * What is this? This is a basic module for converting standard coordinates into decimal formatted.
+ *
+ *
+ *
  * General usage:  Pass in traditional style coodinates as a string
  * Example: 48°22'12.1"N 121°37'56.2"W
  * Should Output: 48.370028, -121.632278
@@ -83,7 +87,7 @@ function stdCoordsToDecimal(dd, mm, ss, _hemisphere = true){
 function decimalCoordsToStd(coordinatePair){
     let lat = coordinatePair[0];
     let lng = coordinatePair[1];
-    
+
 }
 
 /**
@@ -142,13 +146,23 @@ function datumFromString(datumToParse){
     console.log(degrees);
     console.log(mins);
     console.log(secs);
-    /*console.log(stingArray[0]);
+
+
+    /*
+    Debugging tests
+    console.log(stingArray[0]);
     console.log(stingArray[1]);
     console.log(stingArray[2]);
     console.log(stingArray[2][0]);
     */
     return new DatumObj(degrees, mins, secs, hemisphere);
 }
+
+/**
+ * Probably excessive but an extra function for trimming space of stings
+ * @param str
+ * @returns {string}
+ */
 
 function trimString(str) {
     return str.trim();
