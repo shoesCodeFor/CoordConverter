@@ -80,8 +80,10 @@ function stdCoordsToDecimal(dd, mm, ss, _hemisphere = true){
     return decimalFmt.toFixed(12);
 }
 
-function decimalCoordsToStd(){
-
+function decimalCoordsToStd(coordinatePair){
+    let lat = coordinatePair[0];
+    let lng = coordinatePair[1];
+    
 }
 
 /**
