@@ -94,22 +94,27 @@ function stdCoordsToDecimal(dd, mm, ss, _hemisphere = true){
  *
  */
 
-function decimalCoordsToStd(coordinatePair){
+function decimalCoordsToStd(coord){
 
-    // Put the coord values into the temp var
-    let lat = coordinatePair[0];
-    let lng = coordinatePair[1];
+    try{
+        if(isNaN(coord)){
+            throw 'We need a number';
+        }
+        // Lets round off the decimal
+        let degrees = Math.floor(coord);
+        // Take the decimal out and place it in another temp var
+        let decimal = coord - degrees;
+        let minutes = Math.floor((decimal * 60 ) % 60);
+        let seconds = (decimal * 3600) % 60;
+        seconds = seconds.toFixed(3);
+        console.log(degrees + '°' + minutes + '\'' + seconds + "\"");
+    }
+    catch (error){
+        console.log(error);
+    }
+    finally {
 
-    // Lets round off the decimal
-    let latitudeDeg = Math.floor(lat);
-    let longDeg = Math.floor(lng);
-
-    // Take the decimal out and place it in another temp var
-
-
-    // 
-
-    console.log(Math.floor(35.333));
+    }
 
 }
 
@@ -204,7 +209,9 @@ function coordPairSplitter(){
 
 
 
-decimalCoordsToStd([34,75]);
+decimalCoordsToStd(34.7663);
+
+decimalCoordsToStd("93kkd");
 
 
 
