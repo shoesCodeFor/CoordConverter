@@ -95,8 +95,21 @@ function stdCoordsToDecimal(dd, mm, ss, _hemisphere = true){
  */
 
 function decimalCoordsToStd(coordinatePair){
+
+    // Put the coord values into the temp var
     let lat = coordinatePair[0];
     let lng = coordinatePair[1];
+
+    // Lets round off the decimal
+    let latitudeDeg = Math.floor(lat);
+    let longDeg = Math.floor(lng);
+
+    // Take the decimal out and place it in another temp var
+
+
+    // 
+
+    console.log(Math.floor(35.333));
 
 }
 
@@ -191,11 +204,11 @@ function coordPairSplitter(){
 
 
 
+decimalCoordsToStd([34,75]);
 
 
 
-
-// Tests
+/* Tests
 // Std Coords to Decimal
 console.log(stdCoordsToDecimal(35, 54, 23, true));
 //console.log(stdCoordsToDecimal(-35, 54, 23));
@@ -209,3 +222,5 @@ console.log(stdCoordsToDecimal(tester.degrees, tester.minutes, tester.seconds, t
 var testStr = "35° 54' 22.9998\"W 35° 54' 22.9998\"";
 var num_matches = testStr.match(/ /gi).length;
 console.log("Number of spaces: " + num_matches);
+
+*/
