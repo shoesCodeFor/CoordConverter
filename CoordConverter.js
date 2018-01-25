@@ -84,6 +84,16 @@ function stdCoordsToDecimal(dd, mm, ss, _hemisphere = true){
     return decimalFmt.toFixed(12);
 }
 
+/**
+ *
+ * @param coordinatePair
+ *
+ * D = Formula round down and remove decimal value for degrees
+ * M = truncate((|Ddec| * 60) % 60)
+ * S = (|Ddec| * 3600) % 60
+ *
+ */
+
 function decimalCoordsToStd(coordinatePair){
     let lat = coordinatePair[0];
     let lng = coordinatePair[1];
