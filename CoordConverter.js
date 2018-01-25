@@ -1,9 +1,8 @@
 /**
  * CoordConverter.js
  *
- * What is this? This is a basic module for converting standard coordinates into decimal formatted.
- *
- *
+ * What is this? This is a basic module for converting standard
+ * coordinates into decimal formatted.
  *
  * General usage:  Pass in traditional style coodinates as a string
  * Example: 48°22'12.1"N 121°37'56.2"W
@@ -16,6 +15,8 @@
 
 
 /**
+ * Usage = Pass a pair of coords into the function and get 2 decimal
+ * formatted pair back
  *
  * @param latStr - Latitude string in traditional format
  * @param lngStr - Longitude string in traditional format
@@ -30,8 +31,8 @@ function CoordinateConversion(latStr, lngStr){
 
 /**
  * This is a coordinate in standard decimal format
- * @param lat - float value (positive is Northern Hemisphere, negative is Southern)
- * @param lng - float value (positive is Eastern Hemisphere, negative is Western)
+ * @param lat - float value (N is Positive / S is Negative)
+ * @param lng - float value (E is Positive / W is Negative)
  * @constructor
  */
 
@@ -76,7 +77,7 @@ function stdCoordsToDecimal(dd, mm, ss, _hemisphere = true){
     let seconds = parseFloat(ss);
     let hemisphere = _hemisphere;
 
-    let decimalFmt = dd + mm/60 +ss/3600;
+    let decimalFmt = degrees + minutes/60 + seconds/3600;
     if(!hemisphere){
         decimalFmt = decimalFmt * -1;
         console.log("Negative Coordinate");
@@ -92,10 +93,29 @@ function stdCoordsToDecimal(dd, mm, ss, _hemisphere = true){
  * M = truncate((|Ddec| * 60) % 60)
  * S = (|Ddec| * 3600) % 60
  *
+ * Lat is 0 Lng is 1
  */
 
-function decimalCoordsToStd(coord){
-
+function decimalCoordsToStd(coord, LatOrLng){
+    let Directionals = ['N', 'S', 'E', 'W'];
+    let Dir = new String();
+    if(!LatOrLng){
+        if(coord > 0){
+            Dir = Directionals[0];
+        }
+        else{
+            Dir = Directionals[1];
+        }
+    }
+    else{
+        if(coord > 0 ){
+            Dir = Directionals[2];
+        }
+        else {
+            Dir = Directionals[3];
+        }
+    }
+    let CoordStr = new String();
     try{
         if(isNaN(coord)){
             throw 'We need a number';
@@ -107,13 +127,14 @@ function decimalCoordsToStd(coord){
         let minutes = Math.floor((decimal * 60 ) % 60);
         let seconds = (decimal * 3600) % 60;
         seconds = seconds.toFixed(3);
-        console.log(degrees + '°' + minutes + '\'' + seconds + "\"");
+        // console.log(degrees + '°' + minutes + '\'' + seconds + "\"");
+        CoordStr = degrees + '°' + minutes + '\'' + seconds + '\"' + Dir;
     }
     catch (error){
         console.log(error);
     }
     finally {
-
+        return CoordStr;
     }
 
 }
@@ -209,9 +230,7 @@ function coordPairSplitter(){
 
 
 
-decimalCoordsToStd(34.7663);
 
-decimalCoordsToStd("93kkd");
 
 
 
@@ -231,3 +250,10 @@ var num_matches = testStr.match(/ /gi).length;
 console.log("Number of spaces: " + num_matches);
 
 */
+
+var TestCoord = decimalCoordsToStd(34.7663, false);
+
+console.log(TestCoord);
+
+// Error test
+decimalCoordsToStd("93kkd");
