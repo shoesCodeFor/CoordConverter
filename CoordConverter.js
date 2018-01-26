@@ -4,9 +4,15 @@
  * What is this? This is a basic module for converting standard
  * coordinates into decimal formatted.
  *
- * General usage:  Pass in traditional style coodinates as a string
- * Example: 48°22'12.1"N 121°37'56.2"W
+ * General usage:  Passing in traditional style coodinates as a string
+ * Example Input: 48°22'12.1"N 121°37'56.2"W
  * Should Output: 48.370028, -121.632278
+ *
+ * General usage:  Passing in floating point coodinates as an array
+ * Example Input: 48.370028, -121.632278
+ * Should Output: 48°22'12.1"N 121°37'56.2"W
+ *
+ *
  *
  */
 
@@ -140,6 +146,20 @@ function decimalCoordsToStd(coord, LatOrLng){
 }
 
 /**
+ * NOTE: This function does too much.  Need to refactor this.
+ *
+ * Should do the following:
+ *
+ * 1) Check, is this a pair?
+ *  a) If yes, then recursively call this function.
+ * 2) If no, then does it have spaces in between dd/mm/ss
+ *  b) If yes then lets replace the deg/min/seconds markers with spaces
+ * 3) If no spaces, then lets replace markers with spaces and parse
+ *
+ * We will only parse one string at a time
+ * If the datum to parse is longer than one datum, recursively call this for each one
+ *
+ *
  * Refactor this - one function to trim the string, one to count the space and one parse
  * North Latitude and East Longitude are positive
  * South Latitude and West Longitude are negative
@@ -149,8 +169,19 @@ function datumFromString(datumToParse){
     // Trim left and right whitespaces
     datumToParse = datumToParse.trim();
     var numOfSpaces = 0;
+    var numOfDatum = 0;
+    var isPair = new Boolean();
     numOfSpaces = datumToParse.match(/ /gi).length;
+    numOfDatum = datumToParse.match(/"/gi).length;
+    if(datumToParse.match(/" /gi).length){
+        isPair = true;
+    }
+    else{
+        isPair = false;
+    }
+
     console.log("Number of spaces: " + numOfSpaces);
+    console.log("Number of datum: " + numOfDatum);
 
     switch (numOfSpaces) {
         case 0:
@@ -240,20 +271,21 @@ console.log(stdCoordsToDecimal(35, 54, 23, true));
 //console.log(stdCoordsToDecimal(-35, 54, 23));
 
 // Datum from a string into conversion
+*/
 datumFromString("35° 54' 22.9998\"");
 var tester = datumFromString("35° 54' 22.9998\"W");
 console.log(stdCoordsToDecimal(tester.degrees, tester.minutes, tester.seconds, tester.hemisphere));
 
-// The whole shebang
+/* The whole shebang
 var testStr = "35° 54' 22.9998\"W 35° 54' 22.9998\"";
 var num_matches = testStr.match(/ /gi).length;
 console.log("Number of spaces: " + num_matches);
 
 */
 
-var TestCoord = decimalCoordsToStd(34.7663, false);
 
-console.log(TestCoord);
+// var TestCoord = decimalCoordsToStd(34.7663, false);
+// console.log(TestCoord);
 
 // Error test
-decimalCoordsToStd("93kkd");
+// decimalCoordsToStd("93kkd");
