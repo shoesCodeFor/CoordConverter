@@ -7,7 +7,7 @@ var CoordConverterTests = new CoordConverter();
 
 
 // Log out all functions
-console.log(CoordConverterTests);
+console.log(CoordConverterTests.trimString('   Hhss    '));
 
 
 // Test for single std format coord

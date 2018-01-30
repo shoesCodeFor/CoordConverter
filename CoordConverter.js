@@ -248,7 +248,7 @@ function CoordConversion(){
      * @returns {string}
      */
 
-    function trimString(str) {
+    this.trimString = function (str) {
         return str.trim();
     }
 
