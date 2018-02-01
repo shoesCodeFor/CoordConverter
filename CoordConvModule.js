@@ -57,12 +57,12 @@ function CoordConversion(){
      * @param longObj
      * @constructor
      */
-    this.DatumCoordinateObjfunction = (latObj, longObj) => {
+    this.DatumCoordinateObj = (latObj, longObj) => {
         this.latitude = latObj;
         this.longitude = longObj;
-
+        console.log(latObj.name);
         // Convert these into one string
-
+       // return this.latitude + ' ' + this.longitude;
     };
 
     this.DatumObj = function (degrees, minutes, seconds, hemisphere = true) {

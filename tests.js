@@ -2,13 +2,14 @@
 
 
 
-var CoordConverter = require('./CoordConverter.js');
+var CoordConverter = require('./CoordConvModule.js');
 var CoordConverterTests = new CoordConverter();
 
 
 // Log out all functions
 console.log(CoordConverterTests.trimString('   Hhss    '));
 
+console.log(CoordConverterTests.DatumCoordinateObj({name: 'Hese'}, 'Mese'));
 
 // Test for single std format coord
 
