@@ -32,7 +32,7 @@ function CoordConversion(){
      * @returns {CoordinateObj} - should be as an array
      * @constructor
      */
-    this.CoordinateConversion = function (latStr, lngStr){
+    this.CoordinateConversion = (latStr, lngStr) => {
         this.latDatum = datumFromString(latStr);
         this.lngDatum = datumFromString(lngStr);
         return new CoordinateObj(stdCoordsToDecimal(this.latDatum), stdCoordsToDecimal(this.lngDatum));
@@ -45,7 +45,7 @@ function CoordConversion(){
      * @constructor
      */
 
-    this.CoordinateObj = function (lat, lng) {
+    this.CoordinateObj = (lat, lng) => {
         this.latitude = lat;
         this.longitude = lng;
 
@@ -65,7 +65,7 @@ function CoordConversion(){
        // return this.latitude + ' ' + this.longitude;
     };
 
-    this.DatumObj = function (degrees, minutes, seconds, hemisphere = true) {
+    this.DatumObj = (degrees, minutes, seconds, hemisphere = true) => {
         this.degrees = degrees;
         this.minutes = minutes;
         this.seconds = seconds;
@@ -82,7 +82,7 @@ function CoordConversion(){
      *
      *   .60798357841 11 places is most accurate
      */
-    function stdCoordsToDecimal(dd, mm, ss, _hemisphere = true){
+    this.stdCoordsToDecimal = (dd, mm, ss, _hemisphere = true) => {
         let degrees = parseFloat(dd);
         let minutes = parseFloat(mm);
         let seconds = parseFloat(ss);
@@ -94,7 +94,7 @@ function CoordConversion(){
             console.log("Negative Coordinate");
         }
         return decimalFmt.toFixed(12);
-    }
+    };
 
     /**
      *
@@ -107,9 +107,9 @@ function CoordConversion(){
      * Lat is 0 Lng is 1
      */
 
-    function decimalCoordsToStd(coord, LatOrLng){
+    this.decimalCoordsToStd = (coord, LatOrLng) => {
         let Directionals = ['N', 'S', 'E', 'W'];
-        let Dir = new String();
+        let Dir = String();
         if(!LatOrLng){
             if(coord > 0){
                 Dir = Directionals[0];
@@ -126,7 +126,7 @@ function CoordConversion(){
                 Dir = Directionals[3];
             }
         }
-        let CoordStr = new String();
+        let CoordStr = String();
         try{
             if(isNaN(coord)){
                 throw 'We need a number';
@@ -148,7 +148,7 @@ function CoordConversion(){
             return CoordStr;
         }
 
-    }
+    };
 
     /**
      * NOTE: This function does too much.  Need to refactor this.
@@ -170,12 +170,12 @@ function CoordConversion(){
      * South Latitude and West Longitude are negative
      */
 
-    function datumFromString(datumToParse){
+    this.datumFromString = (datumToParse) => {
         // Trim left and right whitespaces
         datumToParse = datumToParse.trim();
         var numOfSpaces = 0;
         var numOfDatum = 0;
-        var isPair = new Boolean();
+        var isPair = Boolean();
         numOfSpaces = datumToParse.match(/ /gi).length;
         numOfDatum = datumToParse.match(/"/gi).length;
         if(datumToParse.match(/" /gi).length){
@@ -241,7 +241,7 @@ function CoordConversion(){
         console.log(stingArray[2][0]);
         */
         return new DatumObj(degrees, mins, secs, hemisphere);
-    }
+    };
 
     /**
      * Probably excessive but an extra function for trimming space of stings
@@ -251,7 +251,7 @@ function CoordConversion(){
 
     this.trimString = function (str) {
         return str.trim();
-    }
+    };
 
 
     function coordPairSplitter(){

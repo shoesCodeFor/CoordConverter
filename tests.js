@@ -2,8 +2,8 @@
 
 
 
-var CoordConverter = require('./CoordConvModule.js');
-var CoordConverterTests = new CoordConverter();
+const CoordConverter = require('./CoordConvModule.js');
+const CoordConverterTests = new CoordConverter();
 
 
 // Log out all functions
