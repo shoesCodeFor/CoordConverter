@@ -15,4 +15,12 @@ You can use this package 2 ways.
 
 ##Vanilla JS
 
-1) Include the JS file 
+1) Include the JS file with `<script src="/path/to/CoordConverter.js"></script>`
+2) Start using the functions within the JS file.
+
+
+Recommended usage: parse in a string with one or two coordinates and pass them into the functions.  
+
+Example: 35°54'22.9998"W
+
+
