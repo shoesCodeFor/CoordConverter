@@ -3,13 +3,18 @@
 
 
 const CoordConverter = require('./CoordConvModule.js');
-const CoordConverterTests = new CoordConverter();
+const CoordModTests = new CoordConverter();
 
 
 // Log out all functions
-console.log(CoordConverterTests.trimString('   Hhss    '));
+var testObject = CoordModTests.datumFromString("35° 54' 22.9998\"W");
+console.log(testObject);
+var aTestPair = CoordModTests.CoordinateConversion();
 
-console.log(CoordConverterTests.DatumCoordinateObj({name: 'Hese'}, 'Mese'));
+
+console.log(CoordModTests.trimString('   Hhss    '));
+
+console.log(CoordModTests.DatumCoordinateObj({name: 'Hese'}, 'Mese'));
 
 // Test for single std format coord
 

@@ -175,7 +175,7 @@ function CoordConversion(){
         datumToParse = datumToParse.trim();
         var numOfSpaces = 0;
         var numOfDatum = 0;
-        var isPair = Boolean();
+        var isPair = false;
         numOfSpaces = datumToParse.match(/ /gi).length;
         numOfDatum = datumToParse.match(/"/gi).length;
         if(datumToParse.match(/" /gi).length){

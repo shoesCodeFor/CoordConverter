@@ -20,8 +20,6 @@
 
 
 
-function CoordConversion(){
-
     /**
      * Usage = Pass a pair of coords into the function and get 2 decimal
      * formatted pair back
@@ -177,7 +175,7 @@ function CoordConversion(){
         var isPair = new Boolean();
         numOfSpaces = datumToParse.match(/ /gi).length;
         numOfDatum = datumToParse.match(/"/gi).length;
-        if(datumToParse.match(/" /gi).length){
+        if(numOfDatum > 0){
             isPair = true;
         }
         else{
@@ -263,12 +261,7 @@ function CoordConversion(){
 
     }
 
-}
 
-
-
-
-module.exports = CoordConversion;
 
 
 
@@ -279,8 +272,9 @@ console.log(stdCoordsToDecimal(35, 54, 23, true));
 //console.log(stdCoordsToDecimal(-35, 54, 23));
 
 /* Datum from a string into conversion
-
+*/
 datumFromString("35° 54' 22.9998\"");
+/*
 var tester = datumFromString("35° 54' 22.9998\"W");
 console.log(stdCoordsToDecimal(tester.degrees, tester.minutes, tester.seconds, tester.hemisphere));
 
