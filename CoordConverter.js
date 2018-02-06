@@ -246,19 +246,26 @@
      * @returns {string}
      */
 
-    this.trimString = function (str) {
+    const trimString = function (str) {
         return str.trim();
-    }
+    };
 
 
-    function coordPairSplitter(){
+    function coordParse(coordStr){
+
         // If a coordinate string is a pair then we send it here
+        if(isPair === true){
+            // If the coord has a directional and space then split there
+            // If the coord has a double quote and space split it here
 
-        // If the coord has a directional and space then split there
-
-        // If the coord has a double quote and space split it here
-
-
+            let lat = datumFromString(firstCoord);
+            let lng = datumFromString(secondCoord);
+            return [lat, lng];
+        }
+        // It's a single coordinate
+        else{
+            return datumFromString(coordStr);
+        }
     }
 
 
