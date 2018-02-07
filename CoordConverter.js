@@ -170,35 +170,11 @@
     function datumFromString(datumToParse){
         // Trim left and right whitespaces
         datumToParse = datumToParse.trim();
-        var numOfSpaces = 0;
-        var numOfDatum = 0;
-        var isPair = new Boolean();
-        numOfSpaces = datumToParse.match(/ /gi).length;
-        numOfDatum = datumToParse.match(/"/gi).length;
-        if(numOfDatum > 0){
-            isPair = true;
-        }
-        else{
-            isPair = false;
-        }
 
-        console.log("Number of spaces: " + numOfSpaces);
-        console.log("Number of datum: " + numOfDatum);
-
-        switch (numOfSpaces) {
-            case 0:
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-            case 4:
-                break;
-        }
 
         let hemisphere = true;
         if(datumToParse.includes('W') || datumToParse.includes('S')){
-            // First we replace the last character witha space and trim it
+            // First we replace the last character with a space and trim it
             hemisphere = false;
             console.log('Negative Coordinate');
             console.log('Pre Slice: ' + datumToParse );
@@ -252,7 +228,48 @@
 
 
     function coordParse(coordStr){
+        let datumToParse = coordStr.trim();
+        let numOfSpaces = 0;
+        let numOfDatum = 0;
+        let isPair = new Boolean();
+        numOfSpaces = datumToParse.match(/ /gi).length;
+        numOfDatum = datumToParse.match(/"/gi).length;
+        if(numOfDatum > 0 && numOfDatum < 2){
+            isPair = true;
+        }
+        else if(numOfDatum > 2){
+            // Bad Coordinate String - throw it out
+        }
+        else{
+            isPair = false;
+        }
 
+        console.log("Number of spaces: " + numOfSpaces);
+        console.log("Number of datum: " + numOfDatum);
+
+
+        // The switch will format the string how we want it
+        switch (numOfSpaces) {
+            case 0:
+                // Single coordinate no spaces
+                break;
+            case 1:
+                // Shouldn't happen, but...
+                break;
+            case 2:
+                // Single coordinate with spaces
+                break;
+            case 4:
+                // Shouldn't happen, but
+
+                break;
+            case 5:
+                // Pair of coords with space
+                break;
+            default:
+                //shouldn't get to this point
+                break;
+        }
         // If a coordinate string is a pair then we send it here
         if(isPair === true){
             // If the coord has a directional and space then split there
