@@ -185,7 +185,7 @@
         // Assume this string has spaces between coords
         let stingArray = datumToParse.split(" ");
         let degrees =  parseFloat(stingArray[0].replace(/d|e|g|r|s|°/gi, " "));
-        let mins = parseFloat(stingArray[1].replace(/m|i|n|u|t|e|s|"/gi, " "));
+        let mins = parseFloat(stingArray[1].replace(/m|i|n|u|t|e|s|'/gi, " "));
         let secs = parseFloat(stingArray[2].replace(/s|e|c|o|n|d|"/gi, " "));
 
 
@@ -232,6 +232,10 @@
         let numOfSpaces = 0;
         let numOfDatum = 0;
         let isPair = new Boolean();
+
+        let firstCoord;
+        let secondCoord;
+        
         numOfSpaces = datumToParse.match(/ /gi).length;
         numOfDatum = datumToParse.match(/"/gi).length;
         if(numOfDatum > 0 && numOfDatum < 2){
@@ -254,7 +258,8 @@
                 // Single coordinate no spaces
                 break;
             case 1:
-                // Shouldn't happen, but...
+                // Pair of coords with one space between
+
                 break;
             case 2:
                 // Single coordinate with spaces
@@ -265,6 +270,10 @@
                 break;
             case 5:
                 // Pair of coords with space
+                // Assume this string has spaces between coords
+                let stingArray = datumToParse.split("\" ");
+                firstCoord = stringArray[0];
+                secondCoord = stringArray[1];
                 break;
             default:
                 //shouldn't get to this point
