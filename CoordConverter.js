@@ -21,6 +21,8 @@
 
 
     /**
+     * LETS CHECK THIS OUT - WE PROBABLY DON'T NEED IT WITH COORD S
+     *
      * Usage = Pass a pair of coords into the function and get 2 decimal
      * formatted pair back
      *
@@ -30,9 +32,23 @@
      * @constructor
      */
     function CoordinateConversion(latStr, lngStr){
-        this.latDatum = datumFromString(latStr);
-        this.lngDatum = datumFromString(lngStr);
-        return new CoordinateObj(stdCoordsToDecimal(this.latDatum), stdCoordsToDecimal(this.lngDatum));
+        // We have a pair of coord
+        if(latStr && lngStr){
+            this.latDatum = datumFromString(latStr);
+            this.lngDatum = datumFromString(lngStr);
+            return new CoordinateObj(stdCoordsToDecimal(this.latDatum), stdCoordsToDecimal(this.lngDatum));
+        }
+        // We have one lat coord
+        else if(latStr){
+            this.latDatum = datumFromString(latStr);
+            return new CoordinateObj(stdCoordsToDecimal(this.latDatum));
+        }
+        // We have on lng coord
+        else{
+            this.lngDatum = datumFromString(lngStr);
+            return new CoordinateObj(stdCoordsToDecimal(this.lngDatum));
+        }
+
     }
 
     /**
@@ -235,7 +251,7 @@
 
         let firstCoord;
         let secondCoord;
-        
+
         numOfSpaces = datumToParse.match(/ /gi).length;
         numOfDatum = datumToParse.match(/"/gi).length;
         if(numOfDatum > 0 && numOfDatum < 2){

@@ -98,13 +98,9 @@ function CoordConversion(){
 
     /**
      *
-     * @param coordinatePair
-     *
-     * D = Formula round down and remove decimal value for degrees
-     * M = truncate((|Ddec| * 60) % 60)
-     * S = (|Ddec| * 3600) % 60
-     *
-     * Lat is 0 Lng is 1
+     * @param coord
+     * @param LatOrLng
+     * @returns {string}
      */
 
     this.decimalCoordsToStd = (coord, LatOrLng) => {
