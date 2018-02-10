@@ -13,9 +13,6 @@
  * Should Output: 48°22'12.1"N 121°37'56.2"W
  *
  * Working on safe exports...
- *
- *
- *
  */
 
 
@@ -52,16 +49,16 @@
     }
 
     /**
-     * This is a coordinate in standard decimal format
+     * This is a coordinate pair in standard decimal format
      * @param lat - float value (N is Positive / S is Negative)
      * @param lng - float value (E is Positive / W is Negative)
      * @constructor
      */
 
     function CoordinateObj(lat, lng) {
-        this.latitude = lat;
-        this.longitude = lng;
-
+        this.latitude = parseFloat(lat);
+        this.longitude = parseFloat(lng);
+        return [this.latitude, this.longitude];
     }
 
     /**
@@ -94,6 +91,15 @@
      *   dd = whole degrees, mm = minutes, ss = seconds
      *
      *   .60798357841 11 places is most accurate
+     */
+
+    /**
+     *
+     * @param dd
+     * @param mm
+     * @param ss
+     * @param _hemisphere
+     * @returns {string}
      */
     function stdCoordsToDecimal(dd, mm, ss, _hemisphere = true){
         let degrees = parseFloat(dd);
