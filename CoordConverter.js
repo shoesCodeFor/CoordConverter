@@ -238,88 +238,100 @@
         return new DatumObj(degrees, mins, secs, hemisphere);
     }
 
-    /**
-     * Probably excessive but an extra function for trimming space of stings
-     * @param str
-     * @returns {string}
-     */
+/**
+ *
+ * @param coordStr
+ * @returns {[null,null]}
+ */
+function coordParse(coordStr){
+    // Trim white space off the front and back
+    let datumToParse = coordStr.trim();
+    // Number of spaces to determine logic
+    let numOfSpaces = 0;
+    // Probably not needed
+    let numOfDatum = 0;
+    // Pairs will call the split
+    let isPair = new Boolean();
 
-    const trimString = function (str) {
-        return str.trim();
-    };
+    let firstCoord;
+    let secondCoord;
 
+    numOfSpaces = datumToParse.match(/ /gi).length;
+    numOfDatum = datumToParse.match(/"/gi).length;
 
-    function coordParse(coordStr){
-        let datumToParse = coordStr.trim();
-        let numOfSpaces = 0;
-        let numOfDatum = 0;
-        let isPair = new Boolean();
+    if(numOfDatum > 0 && numOfDatum < 2){
+        isPair = true;
+        if(datumToParse.match(/" N /gi).length || datumToParse.match(/" S /gi).length){
 
-        let firstCoord;
-        let secondCoord;
-
-        numOfSpaces = datumToParse.match(/ /gi).length;
-        numOfDatum = datumToParse.match(/"/gi).length;
-        if(numOfDatum > 0 && numOfDatum < 2){
-            isPair = true;
         }
-        else if(numOfDatum > 2){
-            // Bad Coordinate String - throw it out
+        else if(datumToParse.match(/" n /gi).length || datumToParse.match(/" s /gi).length){
+
+        }
+        else if(datumToParse.match(/"N /gi).length || datumToParse.match(/"S /gi).length){
+
+        }
+        else if(datumToParse.match(/"n /gi).length || datumToParse.match(/"s /gi).length){
+
         }
         else{
-            isPair = false;
-        }
-
-        console.log("Number of spaces: " + numOfSpaces);
-        console.log("Number of datum: " + numOfDatum);
-
-
-        // The switch will format the string how we want it
-        switch (numOfSpaces) {
-            case 0:
-                // Single coordinate no spaces
-                break;
-            case 1:
-                // Pair of coords with one space between
-
-                break;
-            case 2:
-                // Single coordinate with spaces
-                break;
-            case 4:
-                // Shouldn't happen, but
-
-                break;
-            case 5:
-                // Pair of coords with space
-                // Assume this string has spaces between coords
-                let stingArray = datumToParse.split("\" ");
-                firstCoord = stringArray[0];
-                secondCoord = stringArray[1];
-                break;
-            default:
-                //shouldn't get to this point
-                break;
-        }
-        // If a coordinate string is a pair then we send it here
-        if(isPair === true){
-            // If the coord has a directional and space then split there
-            // If the coord has a double quote and space split it here
-
-            let lat = datumFromString(firstCoord);
-            let lng = datumFromString(secondCoord);
-            return [lat, lng];
-        }
-        // It's a single coordinate
-        else{
-            return datumFromString(coordStr);
+            //
         }
     }
+    else if(numOfDatum > 2){
+        // Bad Coordinate String - throw it out
+    }
+    else{
+        isPair = false;
+    }
+
+    console.log("Number of spaces: " + numOfSpaces);
+    console.log("Number of datum: " + numOfDatum);
+
+
+    // The switch will format the string how we want it
+    switch (numOfSpaces) {
+        case 0:
+            // Single coordinate no spaces
+            break;
+        case 1:
+            // Pair of coords with one space between
+
+            break;
+        case 2:
+            // Single coordinate with spaces
+            break;
+        case 4:
+            // Shouldn't happen, but
+
+            break;
+        case 5:
+            // Pair of coords with space
+            // Assume this string has spaces between coords
+            let stingArray = datumToParse.split("\" ");
+            firstCoord = stringArray[0];
+            secondCoord = stringArray[1];
+            break;
+        default:
+            //shouldn't get to this point
+            break;
+    }
+    // If a coordinate string is a pair then we send it here
+    if(isPair === true){
+        // If the coord has a directional and space then split there
 
 
 
+        // If the coord has a double quote and space split it here
 
-
+        let lat = datumFromString(firstCoord);
+        let lng = datumFromString(secondCoord);
+        return [lat, lng];
+    }
+    // It's a single coordinate
+    else{
+        return datumFromString(firstCoord);
+    }
+}
 
 /* Tests
 // Std Coords to Decimal
