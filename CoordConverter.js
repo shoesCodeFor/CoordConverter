@@ -244,6 +244,8 @@
  * @returns {[null,null]}
  */
 function coordParse(coordStr){
+    // A var to hold the strings (even if there is one)
+    let coordStrPair = [];
     // Trim white space off the front and back
     let datumToParse = coordStr.trim();
     // Number of spaces to determine logic
@@ -259,11 +261,21 @@ function coordParse(coordStr){
     numOfSpaces = datumToParse.match(/ /gi).length;
     numOfDatum = datumToParse.match(/"/gi).length;
 
-    if(numOfDatum > 0 && numOfDatum < 2){
+    if(numOfDatum > 0 && numOfDatum < 3){
         isPair = true;
-        if(datumToParse.match(/" N /gi).length || datumToParse.match(/" S /gi).length){
-
+        // Has a pair with lots of spacing
+        if(datumToParse.includes(" N ") || datumToParse.includes(" S ")){
+            // Let trim it out and make degrees positive
+            if(datumToParse.includes(" N ")){
+                coordStrPair = datumToParse.split("N ");
+            }
+            // The coord is negative
+            else{
+                coordStrPair = datumToParse.split("S ");
+            }
+            console.log(coordStrPair);
         }
+
         else if(datumToParse.match(/" n /gi).length || datumToParse.match(/" s /gi).length){
 
         }
@@ -308,14 +320,16 @@ function coordParse(coordStr){
             // Pair of coords with space
             // Assume this string has spaces between coords
             let stingArray = datumToParse.split("\" ");
+            break;
             firstCoord = stringArray[0];
             secondCoord = stringArray[1];
-            break;
+            // break;
         default:
             //shouldn't get to this point
             break;
     }
-    // If a coordinate string is a pair then we send it here
+
+    /* If a coordinate string is a pair then we send it here
     if(isPair === true){
         // If the coord has a directional and space then split there
 
@@ -331,6 +345,7 @@ function coordParse(coordStr){
     else{
         return datumFromString(firstCoord);
     }
+    */
 }
 
 /* Tests
@@ -340,7 +355,7 @@ console.log(stdCoordsToDecimal(35, 54, 23, true));
 
 /* Datum from a string into conversion
 */
-datumFromString("35° 54' 22.9998\"");
+// datumFromString("35° 54' 22.9998\"");
 /*
 var tester = datumFromString("35° 54' 22.9998\"W");
 console.log(stdCoordsToDecimal(tester.degrees, tester.minutes, tester.seconds, tester.hemisphere));
@@ -360,3 +375,5 @@ console.log("Number of spaces: " + num_matches);
 
 // Error test
 // decimalCoordsToStd("93kkd");
+
+coordParse("35° 54' 22.9998\" N 35° 54' 22.9998\" W");
