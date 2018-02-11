@@ -276,14 +276,38 @@ function coordParse(coordStr){
             console.log(coordStrPair);
         }
 
-        else if(datumToParse.match(/" n /gi).length || datumToParse.match(/" s /gi).length){
-
+        else if(datumToParse.includes(" n ") || datumToParse.includes(" s ")){
+            // Let trim it out and make degrees positive
+            if(datumToParse.includes(" n ")){
+                coordStrPair = datumToParse.split("n ");
+            }
+            // The coord is negative
+            else{
+                coordStrPair = datumToParse.split("s ");
+            }
+            console.log(coordStrPair);
         }
-        else if(datumToParse.match(/"N /gi).length || datumToParse.match(/"S /gi).length){
-
+        else if(datumToParse.includes("N ") || datumToParse.includes("S ")){
+            // Let trim it out and make degrees positive
+            if(datumToParse.includes("N ")){
+                coordStrPair = datumToParse.split("N ");
+            }
+            // The coord is negative
+            else{
+                coordStrPair = datumToParse.split("S ");
+            }
+            console.log(coordStrPair);
         }
-        else if(datumToParse.match(/"n /gi).length || datumToParse.match(/"s /gi).length){
-
+        else if(datumToParse.includes("n ") || datumToParse.includes("s ")){
+            // Let trim it out and make degrees positive
+            if(datumToParse.includes("n ")){
+                coordStrPair = datumToParse.split("n ");
+            }
+            // The coord is negative
+            else{
+                coordStrPair = datumToParse.split("s ");
+            }
+            console.log(coordStrPair);
         }
         else{
             //
@@ -376,4 +400,4 @@ console.log("Number of spaces: " + num_matches);
 // Error test
 // decimalCoordsToStd("93kkd");
 
-coordParse("35° 54' 22.9998\" N 35° 54' 22.9998\" W");
+coordParse("35° 54' 22.9998\"s 35° 54' 22.9998\" W");
