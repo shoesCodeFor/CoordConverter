@@ -332,6 +332,10 @@ function coordParse(coordStr){
     console.log("Number of datum: " + numOfDatum);
 
 
+
+    // Time to pass/fails test the string pair based on the space count
+    // One " means one coord, two mains a pair.  3 means GTFO
+
     // The switch will format the string how we want it
     switch (numOfSpaces) {
         case 0:
