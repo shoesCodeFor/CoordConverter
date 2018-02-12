@@ -268,10 +268,12 @@ function coordParse(coordStr){
             // Let trim it out and make degrees positive
             if(datumToParse.includes(" N ")){
                 coordStrPair = datumToParse.split("N ");
+                coordStrPair[0] = coordStrPair[0]+"N";
             }
             // The coord is negative
             else{
                 coordStrPair = datumToParse.split("S ");
+                coordStrPair[0] = coordStrPair[0]+"S";
             }
             console.log(coordStrPair);
         }
@@ -280,10 +282,12 @@ function coordParse(coordStr){
             // Let trim it out and make degrees positive
             if(datumToParse.includes(" n ")){
                 coordStrPair = datumToParse.split("n ");
+                coordStrPair[0] = coordStrPair[0]+"N";
             }
             // The coord is negative
             else{
                 coordStrPair = datumToParse.split("s ");
+                coordStrPair[0] = coordStrPair[0]+"S";
             }
             console.log(coordStrPair);
         }
@@ -291,10 +295,12 @@ function coordParse(coordStr){
             // Let trim it out and make degrees positive
             if(datumToParse.includes("N ")){
                 coordStrPair = datumToParse.split("N ");
+                coordStrPair[0] = coordStrPair[0]+" N";
             }
             // The coord is negative
             else{
                 coordStrPair = datumToParse.split("S ");
+                coordStrPair[0] = coordStrPair[0]+" S";
             }
             console.log(coordStrPair);
         }
@@ -302,10 +308,12 @@ function coordParse(coordStr){
             // Let trim it out and make degrees positive
             if(datumToParse.includes("n ")){
                 coordStrPair = datumToParse.split("n ");
+                coordStrPair[0] = coordStrPair[0]+" N";
             }
             // The coord is negative
             else{
                 coordStrPair = datumToParse.split("s ");
+                coordStrPair[0] = coordStrPair[0]+" S";
             }
             console.log(coordStrPair);
         }
@@ -400,4 +408,11 @@ console.log("Number of spaces: " + num_matches);
 // Error test
 // decimalCoordsToStd("93kkd");
 
+coordParse("35° 54' 22.9998\" N 35° 54' 22.9998\" W");
+coordParse("35° 54' 22.9998\" S 35° 54' 22.9998\" W");
+coordParse("35° 54' 22.9998\" n 35° 54' 22.9998\" W");
+coordParse("35° 54' 22.9998\" s 35° 54' 22.9998\" W");
+coordParse("35° 54' 22.9998\"N 35° 54' 22.9998\" W");
+coordParse("35° 54' 22.9998\"S 35° 54' 22.9998\" W");
+coordParse("35° 54' 22.9998\"n 35° 54' 22.9998\" W");
 coordParse("35° 54' 22.9998\"s 35° 54' 22.9998\" W");
