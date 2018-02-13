@@ -269,6 +269,7 @@ function coordParse(coordStr){
             if(datumToParse.includes(" N ")){
                 coordStrPair = datumToParse.split("N ");
                 coordStrPair[0] = coordStrPair[0]+"N";
+
             }
             // The coord is negative
             else{
@@ -283,6 +284,7 @@ function coordParse(coordStr){
             if(datumToParse.includes(" n ")){
                 coordStrPair = datumToParse.split("n ");
                 coordStrPair[0] = coordStrPair[0]+"N";
+                coordStrPair[0].replace(/\s/g,'');
             }
             // The coord is negative
             else{
@@ -314,12 +316,17 @@ function coordParse(coordStr){
             else{
                 coordStrPair = datumToParse.split("s ");
                 coordStrPair[0] = coordStrPair[0]+" S";
+                console.log(coordStrPair);
             }
-            console.log(coordStrPair);
+
         }
         else{
             //
         }
+        coordStrPair[0] = coordStrPair[0].replace(/\s/g,'');
+        coordStrPair[1] = coordStrPair[1].replace(/\s/g,'');
+        console.log('After space cleaning');
+        console.log(coordStrPair);
     }
     else if(numOfDatum > 2){
         // Bad Coordinate String - throw it out
@@ -412,6 +419,9 @@ console.log("Number of spaces: " + num_matches);
 // Error test
 // decimalCoordsToStd("93kkd");
 
+
+// coordParse Test Set
+// Test Set 1
 coordParse("35° 54' 22.9998\" N 35° 54' 22.9998\" W");
 coordParse("35° 54' 22.9998\" S 35° 54' 22.9998\" W");
 coordParse("35° 54' 22.9998\" n 35° 54' 22.9998\" W");
@@ -420,3 +430,10 @@ coordParse("35° 54' 22.9998\"N 35° 54' 22.9998\" W");
 coordParse("35° 54' 22.9998\"S 35° 54' 22.9998\" W");
 coordParse("35° 54' 22.9998\"n 35° 54' 22.9998\" W");
 coordParse("35° 54' 22.9998\"s 35° 54' 22.9998\" W");
+
+console.log('No spaces test set');
+coordParse("35°54'22.9998\"N 35°54'22.9998\"W");
+coordParse("35°54'22.9998\"S 35°54'22.9998\"W");
+coordParse("35°54'22.9998\"n 35°54'22.9998\"W");
+coordParse("35°54'22.9998\"s 35°54'22.9998\"W");
+
