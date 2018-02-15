@@ -75,6 +75,14 @@
 
     }
 
+    /*
+    function DatumObj() {
+        let degrees;
+        let minutes;
+        let seconds;
+        let hemisphere;
+    }
+    */
     function DatumObj(degrees, minutes, seconds, hemisphere = true) {
         this.degrees = degrees;
         this.minutes = minutes;

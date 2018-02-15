@@ -7,6 +7,8 @@ Usage: Receive a coordinate in standard form and return it in decimal format.
 
 You can use this package 2 ways.
 
+Note: not available from NPM
+
 ##Node JS
 
 1) Include this module using Node JS `const CoordConv = require(../path/to/CoordConvModule.js);`
