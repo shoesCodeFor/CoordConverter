@@ -5,13 +5,19 @@
     <title>Coordinate Converter - Demo Page</title>
 </head>
 <body>
-    <h1>Coordinate Converter - Demo Page</h1>
+    <header>
+        <h1>Coordinate Converter - Demo Page</h1>
+    </header>
 
-    <form>
-        <input type="text"/>
-        <input type="text"/>
+    <div>
+        <form onsubmit="return false;">
+            <label for="lat">Latitude:</label>
+            <input type="text" name="lat" id="lat"/>
+            <label for="long">Longitude:</label>
+            <input type="text" name="long" id="long"/>
+        </form>
+    </div>
 
-    </form>
 
     <footer>
         <script type="application/ecmascript">
