@@ -12,9 +12,10 @@
     <div>
         <form onsubmit="return false;">
             <label for="lat">Latitude:</label>
-            <input type="text" name="lat" id="lat"/>
+            <input type="text" name="lat" id="latStr"/>
             <label for="long">Longitude:</label>
-            <input type="text" name="long" id="long"/>
+            <input type="text" name="long" id="lngStr"/>
+            <button onclick="coordSubmit()">Send Coords</button>
         </form>
     </div>
 
@@ -23,7 +24,15 @@
         <script type="application/ecmascript">
             window.onload = () => {
                 console.log('We\'re loaded');
+
+
             };
+            function coordSubmit(){
+                var latStr = document.getElementById('latStr');
+                var lngStr = document.getElementById('lngStr').valueOf();
+                console.log(latStr);
+            }
+
         </script>
     </footer>
 </body>
