@@ -2,15 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Coordinate Converter - Demo Page</title>
+    <title>Coordinate Converter - Test Page</title>
 </head>
 <body>
     <header>
-        <h1>Coordinate Converter - Demo Page</h1>
+        <h1>Coordinate Converter - Test Page</h1>
     </header>
 
     <div>
         <form onsubmit="return false;">
+            <h2>2 Field Coordinate Conversion</h2>
+            <label for="lat">Latitude:</label>
+            <input type="text" name="lat" id="latStr"/>
+            <label for="long">Longitude:</label>
+            <input type="text" name="long" id="lngStr"/>
+            <button onclick="coordSubmit()">Send Coords</button>
+        </form>
+        <form onsubmit="return false;">
+            <h2>6 Field Coordinate Conversion</h2>
             <label for="lat">Latitude:</label>
             <input type="text" name="lat" id="latStr"/>
             <label for="long">Longitude:</label>
@@ -28,9 +37,9 @@
 
             };
             function coordSubmit(){
-                var latStr = document.getElementById('latStr');
-                var lngStr = document.getElementById('lngStr').valueOf();
-                console.log(latStr);
+                var latStr = document.getElementById('latStr').value;
+                var lngStr = document.getElementById('lngStr').value;
+                console.log("Coordinate String Collected" + latStr + " " + lngStr);
             }
 
         </script>
