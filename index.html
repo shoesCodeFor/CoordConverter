@@ -11,6 +11,12 @@
 
     <div>
         <form onsubmit="return false;">
+            <h2>Single Field Coordinate Conversion</h2>
+            <label for="latLngPair">Latitude/Longitude:</label>
+            <input type="text" name="latLngPair" id="latLngStr"/>
+            <button onclick="singleCoordStrSubmit()">Send Coords</button>
+        </form>
+        <form onsubmit="return false;">
             <h2>2 Field Coordinate Conversion</h2>
             <label for="lat">Latitude:</label>
             <input type="text" name="lat" id="latStr"/>
@@ -21,10 +27,10 @@
         <form onsubmit="return false;">
             <h2>6 Field Coordinate Conversion</h2>
             <label for="lat">Latitude:</label>
-            <input type="text" name="lat" id="latStr"/>
+            <input type="text" name="lat" id="latDegInt"/>
             <label for="long">Longitude:</label>
-            <input type="text" name="long" id="lngStr"/>
-            <button onclick="coordSubmit()">Send Coords</button>
+            <input type="text" name="long" id="lngDegInt"/>
+            <button onclick="sixBoxCoordSubmit()">Send Coords</button>
         </form>
     </div>
 
