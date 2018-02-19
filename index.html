@@ -16,7 +16,7 @@
             <h2>Single Field Coordinate Conversion</h2>
             <label for="latLngPair">Latitude/Longitude:</label>
             <input type="text" name="latLngPair" id="latLngStr"/>
-            <button onclick="singleCoordStrSubmit()">Send Coords</button>
+            <button onclick="singleCoordStrSubmit()" class="btn btn-info">Send Coords</button>
         </form>
         <form onsubmit="return false;">
             <h2>2 Field Coordinate Conversion</h2>
@@ -24,7 +24,7 @@
             <input type="text" name="lat" id="latStr"/>
             <label for="long">Longitude:</label>
             <input type="text" name="long" id="lngStr"/>
-            <button onclick="coordSubmit()">Send Coords</button>
+            <button onclick="coordSubmit()" class="btn btn-info">Send Coords</button>
         </form>
         <form onsubmit="return false;">
             <h2>6 Field Coordinate Conversion</h2>
@@ -32,7 +32,7 @@
             <input type="text" name="lat" id="latDegInt"/>
             <label for="long">Longitude:</label>
             <input type="text" name="long" id="lngDegInt"/>
-            <button onclick="sixBoxCoordSubmit()">Send Coords</button>
+            <button onclick="sixBoxCoordSubmit()" class="btn btn-info">Send Coords</button>
         </form>
     </div>
 
@@ -41,11 +41,10 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
         <script type="application/ecmascript">
             window.onload = () => {
                 console.log('We\'re loaded');
-
-
             };
             function coordSubmit(){
                 var latStr = document.getElementById('latStr').value;
