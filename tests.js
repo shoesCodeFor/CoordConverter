@@ -2,7 +2,7 @@
 
 
 
-const CoordConverter = require('./CoordConvModule.js');
+const CoordConverter = require('./CoordConverterModule.js');
 const CoordModTests = new CoordConverter();
 
 

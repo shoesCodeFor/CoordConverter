@@ -1,7 +1,7 @@
 /**
  * CoordConverter.js
  *
- * What is this? This is a basic module for converting standard
+ * What is this? This is a JS function list for converting standard
  * coordinates into decimal formatted.
  *
  * General usage:  Passing in traditional style coodinates as a string
@@ -12,8 +12,35 @@
  * Example Input: 48.370028, -121.632278
  * Should Output: 48°22'12.1"N 121°37'56.2"W
  *
- * Working on safe exports...
+ * Working on safe exports... See CoordConverterModule
  */
+
+// Constructor Function - List out the building block first.  Then we'll use them up
+const directionals = ['N', 'W', 'S', 'E'];
+
+/*
+    function DatumObj() {
+        let degrees;
+        let minutes;
+        let seconds;
+        let hemisphere;
+    }
+    */
+
+/**
+ *
+ * @param degrees
+ * @param minutes
+ * @param seconds
+ * @param hemisphere - null should be a 0 (N)
+ * @constructor
+ */
+function DatumObj(degrees, minutes, seconds, hemisphere = null) {
+    this.degrees = degrees;
+    this.minutes = minutes;
+    this.seconds = seconds;
+    this.hemisphere = hemisphere;
+}
 
 
 
@@ -67,7 +94,8 @@
      * @param longObj
      * @constructor
      */
-    function DatumCoordinateObj(latObj, longObj) {
+    function DatumCoordinateStr(latObj, longObj) {
+
         this.latitude = latObj;
         this.longitude = longObj;
 
@@ -75,20 +103,7 @@
 
     }
 
-    /*
-    function DatumObj() {
-        let degrees;
-        let minutes;
-        let seconds;
-        let hemisphere;
-    }
-    */
-    function DatumObj(degrees, minutes, seconds, hemisphere = true) {
-        this.degrees = degrees;
-        this.minutes = minutes;
-        this.seconds = seconds;
-        this.hemisphere = hemisphere;
-    }
+
 
 
 

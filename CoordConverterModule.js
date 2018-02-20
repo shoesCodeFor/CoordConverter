@@ -1,5 +1,5 @@
 /**
- * CoordConvModule.js
+ * CoordConverterModule.js
  *
  * A Node JS Module
  *

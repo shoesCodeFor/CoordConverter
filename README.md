@@ -11,7 +11,7 @@ Note: not available from NPM
 
 ##Node JS
 
-1) Include this module using Node JS `const CoordConv = require(../path/to/CoordConvModule.js);`
+1) Include this module using Node JS `const CoordConv = require(../path/to/CoordConverterModule.js);`
 2) Initialize the module`const CoordModule = new CoordConv();`
 3) Start firing off function calls!
 
