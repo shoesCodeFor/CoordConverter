@@ -4,7 +4,14 @@
  * What is this? This is a JS function list for converting standard
  * coordinates into decimal formatted.
  *
- * General usage:  Passing in traditional style coodinates as a string
+ * Definitions:
+ * A coordinate pair is an array of floating point nums
+ *  + Postive lats are Northern Hemisphere, Positive longs are Eastern Hemisphere
+ *  - Negative lats are Southern, Negative longs are Western Hemisphere
+ *
+ * A datum is a coordinate with a degree, minute, second and hemisphere value
+ *
+ * General usage:  Passing in traditional style coodinates (datums) as a string
  * Example Input: 48°22'12.1"N 121°37'56.2"W
  * Should Output: 48.370028, -121.632278
  *
@@ -12,12 +19,14 @@
  * Example Input: 48.370028, -121.632278
  * Should Output: 48°22'12.1"N 121°37'56.2"W
  *
- * Working on safe exports... See CoordConverterModule
+ * Working on safe exports... See CoordConverterModule.js for Node/AMD style imports
  */
 
 // Constructor Function - List out the building block first.  Then we'll use them up
 const directionals = ['N', 'W', 'S', 'E'];
 
+
+// This empty constructor object is not in use
 /*
     function DatumObj() {
         let degrees;
@@ -42,6 +51,18 @@ function DatumObj(degrees, minutes, seconds, hemisphere = null) {
     this.hemisphere = hemisphere;
 }
 
+/**
+ * This is a coordinate pair in standard decimal format
+ * @param lat - float value (N is Positive / S is Negative)
+ * @param lng - float value (E is Positive / W is Negative)
+ * @constructor
+ */
+
+function CoordinateObj(lat, lng) {
+    this.latitude = parseFloat(lat);
+    this.longitude = parseFloat(lng);
+    return [this.latitude, this.longitude];
+}
 
 
     /**
@@ -75,18 +96,7 @@ function DatumObj(degrees, minutes, seconds, hemisphere = null) {
 
     }
 
-    /**
-     * This is a coordinate pair in standard decimal format
-     * @param lat - float value (N is Positive / S is Negative)
-     * @param lng - float value (E is Positive / W is Negative)
-     * @constructor
-     */
 
-    function CoordinateObj(lat, lng) {
-        this.latitude = parseFloat(lat);
-        this.longitude = parseFloat(lng);
-        return [this.latitude, this.longitude];
-    }
 
     /**
      * This function can be used to convert decimal formatted lat/lng pairs to traditional format
