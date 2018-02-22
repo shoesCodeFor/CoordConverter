@@ -98,7 +98,7 @@ function DatumToStr(datumObj = null) {
     this.datumObj = datumObj;
 
     // Convert these into one string
-    if(!this.datumObj === null){
+    if(this.datumObj){
         coordStr += this.datumObj.degrees + '°';
         coordStr += this.datumObj.minutes + '\"';
         coordStr += this.datumObj.seconds + '\'';
@@ -115,7 +115,7 @@ function DatumToStr(datumObj = null) {
  * @returns {string}
  * @constructor
  */
-function DatumPairStr(latObj = null, lngObg = null) {
+function DatumPairStr(latObj = null, lngObj = null) {
     let datumPair = DatumToStr(latObj);
     if(!lngObj === null && !latObj === null ){
         datumPair += ' ';
@@ -495,3 +495,7 @@ coordParse("35°54'22.9998\"S 35°54'22.9998\"W");
 coordParse("35°54'22.9998\"n 35°54'22.9998\"W");
 coordParse("35°54'22.9998\"s 35°54'22.9998\"W");
 
+let TestDatum =  new DatumObj(45,34,15.12,'W');
+console.log(TestDatum);
+DatumToStr(TestDatum);
+DatumToStr(null);
