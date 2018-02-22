@@ -86,37 +86,44 @@ function CoordinateObj(lat, lng) {
     }
 
 
+/**
+ * This function can be used to convert decimal formatted lat/lng to traditional format
+ * @param latObj
+ * @param longObj
+ * @constructor
+ * @return {string}
+ */
+function DatumToStr(datumObj = null) {
+    let coordStr = '';
+    this.datumObj = datumObj;
 
-    /**
-     * This function can be used to convert decimal formatted lat/lng pairs to traditional format
-     * @param latObj
-     * @param longObj
-     * @constructor
-     */
-    function DatumToStr(latObj = null, longObj = null) {
-        let coordStr = '';
-        this.latitude = latObj;
-        this.longitude = longObj;
-
-        // Convert these into one string
-        if(!this.latitude === null){
-            coordStr += this.latitude.degrees + '°';
-            coordStr += this.latitude.minutes + '\"';
-            coordStr += this.latitude.seconds + '\'';
-            coordStr += this.latitude.hemisphere;
-            if(!this.longitude === null){
-                coordStr += ' ';
-            }
-        }
-        if(!this.longitude === null){
-            coordStr += this.longitude.degrees + '°';
-            coordStr += this.longitude.minutes + '\"';
-            coordStr += this.longitude.seconds + '\'';
-            coordStr += this.longitude.hemisphere;
-        }
-
-        console.log('DatumToStr function fired: ' + coordStr);
+    // Convert these into one string
+    if(!this.datumObj === null){
+        coordStr += this.datumObj.degrees + '°';
+        coordStr += this.datumObj.minutes + '\"';
+        coordStr += this.datumObj.seconds + '\'';
+        coordStr += this.datumObj.hemisphere;
     }
+    console.log('DatumToStr function fired: ' + coordStr);
+    return coordStr;
+}
+
+/**
+ * This function combines object attributes into  a str
+ * @param latObj
+ * @param lngObg
+ * @returns {string}
+ * @constructor
+ */
+function DatumPairStr(latObj = null, lngObg = null) {
+    let datumPair = DatumToStr(latObj);
+    if(!lngObj === null && !latObj === null ){
+        datumPair += ' ';
+    }
+    datumPair += DatumToStr(lngObj);
+    console.log('DatumPairStr function fired: ' + datumPair);
+    return datumPair;
+}
 
 
 
