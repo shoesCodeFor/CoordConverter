@@ -23,18 +23,7 @@
  */
 
 // Constructor Function - List out the building block first.  Then we'll use them up
-const directionals = ['N', 'W', 'S', 'E'];
-
-
-// This empty constructor object is not in use
-/*
-    function DatumObj() {
-        let degrees;
-        let minutes;
-        let seconds;
-        let hemisphere;
-    }
-    */
+const directionals = ['N', 'S', 'E', 'W']; // +, -, +, -
 
 /**
  *
@@ -104,13 +93,29 @@ function CoordinateObj(lat, lng) {
      * @param longObj
      * @constructor
      */
-    function DatumCoordinateStr(latObj, longObj) {
-
+    function DatumToStr(latObj = null, longObj = null) {
+        let coordStr = '';
         this.latitude = latObj;
         this.longitude = longObj;
 
         // Convert these into one string
+        if(!this.latitude === null){
+            coordStr += this.latitude.degrees + '°';
+            coordStr += this.latitude.minutes + '\"';
+            coordStr += this.latitude.seconds + '\'';
+            coordStr += this.latitude.hemisphere;
+            if(!this.longitude === null){
+                coordStr += ' ';
+            }
+        }
+        if(!this.longitude === null){
+            coordStr += this.longitude.degrees + '°';
+            coordStr += this.longitude.minutes + '\"';
+            coordStr += this.longitude.seconds + '\'';
+            coordStr += this.longitude.hemisphere;
+        }
 
+        console.log('DatumToStr function fired: ' + coordStr);
     }
 
 
@@ -423,6 +428,19 @@ function coordParse(coordStr){
     }
     */
 }
+// Messy Guts - Unused or unrealized pieces
+
+
+// This empty constructor object is not in use
+/*
+    function DatumObj() {
+        let degrees;
+        let minutes;
+        let seconds;
+        let hemisphere;
+    }
+    */
+
 
 /* Tests
 // Std Coords to Decimal
