@@ -78,10 +78,14 @@ function CoordinateObj(lat, lng) {
             return new CoordinateObj(stdCoordsToDecimal(this.latDatum));
         }
         // We have on lng coord
-        else{
+        else if(lngStr){
             this.lngDatum = datumFromString(lngStr);
             return new CoordinateObj(stdCoordsToDecimal(this.lngDatum));
         }
+        else{
+            throw error('No Coordinates have been entered');
+        }
+
 
     }
 
@@ -126,10 +130,6 @@ function DatumPairStr(latObj = null, lngObj = null) {
 }
 
 
-
-
-
-
     /**
      *  Unless the string is a "_ dbl-quote and a space then we'll need
      *  (dd + mm/60 +ss/3600) to Decimal degrees (dd.ff)
@@ -157,6 +157,7 @@ function DatumPairStr(latObj = null, lngObj = null) {
             decimalFmt = decimalFmt * -1;
             console.log("Negative Coordinate");
         }
+        // 8 decimals should suffice
         return decimalFmt.toFixed(12);
     }
 
