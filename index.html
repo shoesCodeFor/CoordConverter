@@ -10,16 +10,21 @@
     <header>
         <h1>Coordinate Converter - Test Page</h1>
     </header>
-
+    <div>
+        Type in coordinates in traditional format or as floating poing decimal values.
+    </div>
     <div>
         <form onsubmit="return false;">
             <h2>Single Field Coordinate Conversion</h2>
+            <p>Enter a pair of coordinates.<br><cite>Example: 49°30"1.192'N 45°34"15.12'W"</cite></p>
+
             <label for="latLngPair">Latitude/Longitude:</label>
-            <input type="text" name="latLngPair" id="latLngStr"/>
+            <input type="text" name="latLngPair" id="latLngStr" placeholder=""/>
             <button onclick="singleCoordStrSubmit()" class="btn btn-info">Send Coords</button>
         </form>
         <form onsubmit="return false;">
             <h2>2 Field Coordinate Conversion</h2>
+            <p>Convert a coordinate individually.<br><cite>Example Lat: 49°30"1.192'N Lng:45°34"15.12'W"</cite></p>
             <label for="lat">Latitude:</label>
             <input type="text" name="lat" id="latStr"/>
             <label for="long">Longitude:</label>
@@ -28,6 +33,7 @@
         </form>
         <form onsubmit="return false;">
             <h2>6 Field Coordinate Conversion</h2>
+            <p>Convert datum information by type<br><cite>Example Deg:45 Mins:1.192 Secs: 20.45 Hemisphere: W</cite></p>
             <label for="lat">Latitude:</label>
             <input type="text" name="lat" id="latDegInt"/>
             <label for="long">Longitude:</label>
