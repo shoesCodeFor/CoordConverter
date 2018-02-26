@@ -44,7 +44,7 @@ function DatumObj(degrees, minutes, seconds, hemisphere = null) {
  * This is a coordinate pair in standard decimal format
  * @param lat - float value (N is Positive / S is Negative)
  * @param lng - float value (E is Positive / W is Negative)
- * @constructor
+ * @returns - {array} floating points
  */
 
 function CoordinateObj(lat, lng) {
@@ -66,6 +66,11 @@ function CoordinateObj(lat, lng) {
      * @constructor
      */
     function CoordinateConversion(latStr, lngStr){
+        try{
+
+        }catch (e){
+            throw e;
+        }
         // We have a pair of coord
         if(latStr && lngStr){
             this.latDatum = datumFromString(latStr);
