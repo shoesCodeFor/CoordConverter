@@ -36,12 +36,26 @@
             <h2>6 Field Coordinate Conversion</h2>
             <p>Convert datum information by type<br><cite>Example Deg:45 Mins:1.192 Secs: 20.45 Hemisphere: W</cite></p>
             <label for="lat">Latitude:</label>
-            <input type="text" name="lat" id="latDegInt"/>
+            <input type="number" name="lat" id="latDegInt"/>
+            <input type="number" name="lat" id="latMinInt"/>
+            <input type="number" name="lat" id="latSecFloat"/>
             <label for="long">Longitude:</label>
-            <input type="text" name="long" id="lngDegInt"/>
+            <input type="number" name="long" id="lngDegInt"/>
+            <input type="number" name="long" id="lngMinInt"/>
+            <input type="number" name="long" id="lngMinFloat"/>
             <button onclick="sixBoxCoordSubmit()" class="btn btn-info">Send Coords</button>
         </form>
+        <form onsubmit="return false;">
+            <h2>2 Field Decimal Coordinates to Datum format</h2>
+            <p>Convert a decimal coordinate individually.<br><cite>Example Lat: 49°30"1.192'N Lng:45°34"15.12'W"</cite></p>
+            <label for="lat">Latitude:</label>
+            <input type="text" name="lat" id="latDec"/>
+            <label for="long">Longitude:</label>
+            <input type="text" name="long" id="lngDec"/>
+            <button onclick="coordSubmit()" class="btn btn-info">Send Coords</button>
+        </form>
     </div>
+    <div id="mapCanvas"></div>
 
 
     <footer>
@@ -65,10 +79,15 @@
                 console.log('We\'re loaded');
             };
             function coordSubmit(){
-                var latStr = document.getElementById('latStr').value;
-                var lngStr = document.getElementById('lngStr').value;
+                let latStr = document.getElementById('latStr').value;
+                let lngStr = document.getElementById('lngStr').value;
                 console.log("Coordinate String Collected" + latStr + " " + lngStr);
             }
+            function singleCoordStrSubmit(){
+                let singleCoordSt = document.getElementById("latLngPair").value;
+                console.log("Single Coordinate field is: " + singleCoordSt);
+            }
+
 
         </script>
     </footer>
