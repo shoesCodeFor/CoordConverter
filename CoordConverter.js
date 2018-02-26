@@ -37,7 +37,7 @@ function DatumObj(degrees, minutes, seconds, hemisphere = null) {
     this.degrees = degrees;
     this.minutes = minutes;
     this.seconds = seconds;
-    this.hemisphere = hemisphere;
+    this.hemisphere = directionals[hemisphere];
 }
 
 /**
