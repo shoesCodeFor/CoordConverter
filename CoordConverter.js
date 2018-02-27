@@ -44,7 +44,7 @@ function DatumObj(degrees, minutes, seconds, hemisphere = null) {
  * This is a coordinate pair in standard decimal format
  * @param lat - float value (N is Positive / S is Negative)
  * @param lng - float value (E is Positive / W is Negative)
- * @returns {array} - floating points
+ * @returns array - floating points
  * @constructor
  */
 

@@ -6,24 +6,34 @@
     <meta charset="UTF-8">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
     <link rel="stylesheet" href="CSS/styles.css">
     <title>Coordinate Converter - Test Page</title>
 </head>
 <body>
     <header class="text-center">
-        <h1>Coordinate Converter - Test Page</h1>
+        <h1>Coordinate Converter <i class="fas fa-globe"></i></h1>
     </header>
     <div>
         Type in coordinates in traditional format or as floating poing decimal values.
     </div>
     <div>
         <form onsubmit="return false;">
-            <h2>Single Field Coordinate Conversion</h2>
+            <h2>Single Field - Geodetic Coordinate Pair Conversion</h2>
             <p>Enter a pair of coordinates.<br><cite>Example: 49°30"1.192'N 45°34"15.12'W"</cite></p>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="latLngPairLabel">Lat/Lng:</span>
+                </div>
+                <input type="text" class="form-control" name="latLngPair" id="latLngStr" placeholder="" aria-label="Lat/Lng Pair" aria-describedby="latLngPairLabel"/>
+                <div class="input-group-append">
+                    <button onclick="singleCoordStrSubmit()" class="btn btn-info">Send Coords</button>
+                </div>
+            </div>
 
-            <label for="latLngPair">Latitude/Longitude:</label>
-            <input type="text" name="latLngPair" id="latLngStr" placeholder=""/>
-            <button onclick="singleCoordStrSubmit()" class="btn btn-info">Send Coords</button>
+
+
         </form>
         <form onsubmit="return false;">
             <h2>2 Field Coordinate Conversion</h2>
