@@ -9,13 +9,13 @@ You can use this package 2 ways.
 
 Note: not available from NPM
 
-##Node JS
+## Node JS
 
 1) Include this module using Node JS `const CoordConv = require(../path/to/CoordConverterModule.js);`
 2) Initialize the module`const CoordModule = new CoordConv();`
 3) Start firing off function calls!
 
-##Vanilla JS
+## Vanilla JS
 
 1) Include the JS file with `<script src="/path/to/CoordConverter.js"></script>`
 2) Start using the functions within the JS file.
